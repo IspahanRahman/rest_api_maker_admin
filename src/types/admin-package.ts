@@ -1,5 +1,5 @@
 interface Plan {
-	plan_type: "monthly" | "yearly";
+	plan_type: "monthly" | "yearly" | "quaterly" | "half-yearly";
 	duration_days: number;
 	price: number;
 	discount_type?: "percentage" | "fixed";

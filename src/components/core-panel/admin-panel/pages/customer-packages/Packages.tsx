@@ -54,7 +54,7 @@ export default function Packages() {
 	}
 
 	return (
-		<div className="p-6">
+		<div className="">
 			{/* Header */}
 			<div className="flex items-center justify-between mb-8">
 				<div>
@@ -62,8 +62,8 @@ export default function Packages() {
 					<p className="text-gray-600 mt-1">Manage your subscription packages</p>
 				</div>
 				<Link
-					href="/admin/packages/create"
-					className="flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
+					href="/packages/create"
+					className="flex items-center gap-2 bg-blue-800 text-white px-4 py-2 rounded-lg hover:bg-blue-900 transition-colors"
 				>
 					<Plus size={20} />
 					New Package
@@ -199,8 +199,8 @@ export default function Packages() {
 					</p>
 					{!searchTerm && (
 						<Link
-							href="/admin/packages/create"
-							className="inline-flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
+							href="/packages/create"
+							className="inline-flex items-center gap-2 bg-blue-800 text-white px-4 py-2 rounded-lg hover:bg-blue-900 transition-colors"
 						>
 							<Plus size={20} />
 							Create Package
