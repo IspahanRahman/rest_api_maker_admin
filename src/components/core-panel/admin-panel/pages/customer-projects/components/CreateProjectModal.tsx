@@ -2,7 +2,7 @@
 import React from 'react'
 import { Loader2 } from 'lucide-react'
 import { useCreateProjectMutation } from '@/apis/mutation/customerProject/useCreateProjectMutation';
-import { usePurchasedPackages } from '@/apis/query/customerPackages/useCustomerPackages';
+import { usePurchasedPackages } from '@/apis/query/adminPackages/useCustomerPackages';
 import { toast } from 'react-toastify'
 import Modal from '@/components/common/Modal';
 import Swal from 'sweetalert2';

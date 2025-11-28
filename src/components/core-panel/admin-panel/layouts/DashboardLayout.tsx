@@ -161,7 +161,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
 
           <div className="flex items-center gap-2">
             {/* Theme toggle */}
-            <button
+            {/* <button
               onClick={toggleTheme}
               className="p-2 rounded-lg hover:bg-surface-hover cursor-pointer"
               aria-label="Toggle theme"
@@ -171,13 +171,13 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
               ) : (
                 <Moon className="w-5 h-5 text-text-secondary" />
               )}
-            </button>
+            </button> */}
 
             {/* Notifications */}
-            <button className="relative p-2 rounded-lg hover:bg-surface-hover cursor-pointer">
+            {/* <button className="relative p-2 rounded-lg hover:bg-surface-hover cursor-pointer">
               <Bell className="w-5 h-5 text-text-secondary" />
               <span className="absolute top-1 right-1 w-2 h-2 bg-error-500 rounded-full"></span>
-            </button>
+            </button> */}
 
             {/* Profile dropdown */}
             <div className="relative">

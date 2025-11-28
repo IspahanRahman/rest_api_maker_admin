@@ -2,7 +2,7 @@
 import React, { useEffect } from 'react'
 import { Loader2 } from 'lucide-react'
 import { useUpdateProjectMutation } from '@/apis/mutation/customerProject/useUpdateProjectMutation';
-import { usePurchasedPackages } from '@/apis/query/customerPackages/useCustomerPackages';
+import { usePurchasedPackages } from '@/apis/query/adminPackages/useCustomerPackages';
 import { toast } from 'react-toastify'
 import Modal from '@/components/common/Modal'
 import { Project } from '@/types/customer-project';

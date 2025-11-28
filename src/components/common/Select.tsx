@@ -46,7 +46,7 @@ export default function Select({
 					className="block text-sm font-medium text-foreground"
 				>
 					{label}
-					{required && <span className="text-error-500 ml-1">*</span>}
+					{required && <span className="text-red-500 ml-1">*</span>}
 				</label>
 			)}
 
@@ -57,8 +57,8 @@ export default function Select({
 					onChange={(e) => onChange(e.target.value)}
 					disabled={disabled}
 					className={cn(
-						'w-full px-4 py-2.5 bg-white dark:bg-surface-card',
-						'border border-border-input dark:border-border-subtle rounded-lg',
+						'w-full px-4 py-2 bg-white dark:bg-surface-card',
+						'border border-gray-300 dark:border-border-subtle rounded-lg',
 						'text-foreground dark:text-foreground placeholder:text-text-tertiary dark:placeholder:text-text-tertiary',
 						'focus:outline-none focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 focus:border-transparent',
 						'disabled:opacity-50 disabled:cursor-not-allowed',
