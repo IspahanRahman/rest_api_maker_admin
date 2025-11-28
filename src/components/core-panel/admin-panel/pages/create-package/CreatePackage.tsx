@@ -27,7 +27,7 @@ interface CreatePackageRequest {
 
 const PLAN_TYPE_OPTIONS = [
     { value: 'monthly', label: 'Monthly' },
-    { value: 'quaterly', label: 'Quaterly' },
+    { value: 'quarterly', label: 'Quarterly' },
     { value: 'half-yearly', label: 'Half-Yearly' },
     { value: 'yearly', label: 'Yearly' },
 ];
@@ -189,7 +189,6 @@ export default function CreatePackage() {
 
         setIsSubmitting(true);
         try {
-            createPackageMutation.setData('name', formData.name);
 			createPackageMutation.data.name = formData.name;
 			createPackageMutation.data.status = formData.status;
 			createPackageMutation.data.max_projects = formData.max_projects;

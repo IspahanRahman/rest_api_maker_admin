@@ -46,7 +46,7 @@ export default function Select({
 					className="block text-sm font-medium text-foreground"
 				>
 					{label}
-					{required && <span className="text-error-500 ml-1">*</span>}
+					{required && <span className="text-red-500 ml-1">*</span>}
 				</label>
 			)}
 
