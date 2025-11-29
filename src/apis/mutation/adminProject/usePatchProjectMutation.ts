@@ -1,5 +1,5 @@
 import { useForm } from "@/hooks/useForm";
-import { PROJECTS_ENDPOINTS } from "@/apis/endpoints/customerProjects_apis";
+import { PROJECTS_ENDPOINTS } from "@/apis/endpoints/adminProjects_apis";
 
 export function usePatchProjectMutation(projectId: string) {
 	const { submit, isLoading, data, errors, setData } = useForm<{ status: string }>(

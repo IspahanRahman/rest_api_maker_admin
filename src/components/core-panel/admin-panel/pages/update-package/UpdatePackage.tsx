@@ -141,28 +141,28 @@ export default function UpdatePackage({ packageId }: { packageId: string }) {
 
 	const handleSubmit = async (e: React.FormEvent) => {
 		e.preventDefault();
-		if(!formData.name || formData.name.trim() === '') {
+		if (!formData.name || formData.name.trim() === '') {
 			toast.error('Package name is required');
 			return;
 		}
-		if(formData.max_projects < 1) {
+		if (formData.max_projects < 1) {
 			toast.error('Max projects must be at least 1');
 			return;
 		}
-		if(formData.max_tables_per_project < 1) {
+		if (formData.max_tables_per_project < 1) {
 			toast.error('Max tables per project must be at least 1');
 			return;
 		}
-		if(formData.plans.length === 0) {
+		if (formData.plans.length === 0) {
 			toast.error('At least one plan is required');
 			return;
 		}
-		for(const plan of formData.plans) {
-			if(plan.price < 0) {
+		for (const plan of formData.plans) {
+			if (plan.price < 0) {
 				toast.error('Plan price cannot be negative');
 				return;
 			}
-			if(plan.duration_days < 1) {
+			if (plan.duration_days < 1) {
 				toast.error('Plan duration must be at least 1 day');
 				return;
 			}
@@ -177,7 +177,7 @@ export default function UpdatePackage({ packageId }: { packageId: string }) {
 			updatePackageMutation.data.features = formData.features;
 			updatePackageMutation.data.plans = formData.plans;
 			const result = await updatePackageMutation.submit();
-			if(!result.status) {
+			if (!result.status) {
 				Swal.fire({
 					icon: 'error',
 					title: 'Error',
@@ -205,16 +205,16 @@ export default function UpdatePackage({ packageId }: { packageId: string }) {
 	return (
 		<div className="max-w-6xl mx-auto">
 			<div className="mb-4">
-				<h1 className="text-3xl font-bold text-gray-900">Update Package</h1>
-				<p className="text-gray-600 mt-1">Edit your subscription package details</p>
+				<h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100">Update Package</h1>
+				<p className="text-gray-600 dark:text-gray-400 mt-1">Edit your subscription package details</p>
 			</div>
 			<form onSubmit={handleSubmit} className="space-y-4">
 				{/* Basic Information */}
-				<div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
-					<h2 className="text-xl font-semibold text-gray-900 mb-6">Basic Information</h2>
+				<div className="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-gray-200 dark:border-slate-800 p-6">
+					<h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-6">Basic Information</h2>
 					<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 						<div>
-							<label className="block text-sm font-medium text-gray-700 mb-2">
+							<label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
 								Package Name <span className="text-red-500">*</span>
 							</label>
 							<input
@@ -222,7 +222,7 @@ export default function UpdatePackage({ packageId }: { packageId: string }) {
 								name="name"
 								value={formData.name}
 								onChange={handleInputChange}
-								className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+								className="w-full px-4 py-2 border border-gray-300 dark:border-slate-700 rounded-lg bg-white dark:bg-slate-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
 								required
 							/>
 						</div>
@@ -236,7 +236,7 @@ export default function UpdatePackage({ packageId }: { packageId: string }) {
 							/>
 						</div>
 						<div>
-							<label className="block text-sm font-medium text-gray-700 mb-2">
+							<label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
 								Max Projects <span className="text-red-500">*</span>
 							</label>
 							<input
@@ -245,12 +245,12 @@ export default function UpdatePackage({ packageId }: { packageId: string }) {
 								value={formData.max_projects}
 								onChange={handleInputChange}
 								min="1"
-								className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+								className="w-full px-4 py-2 border border-gray-300 dark:border-slate-700 rounded-lg bg-white dark:bg-slate-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
 								required
 							/>
 						</div>
 						<div>
-							<label className="block text-sm font-medium text-gray-700 mb-2">
+							<label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
 								Max Tables per Project <span className="text-red-500">*</span>
 							</label>
 							<input
@@ -259,18 +259,18 @@ export default function UpdatePackage({ packageId }: { packageId: string }) {
 								value={formData.max_tables_per_project}
 								onChange={handleInputChange}
 								min="1"
-								className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+								className="w-full px-4 py-2 border border-gray-300 dark:border-slate-700 rounded-lg bg-white dark:bg-slate-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
 								required
 							/>
 						</div>
 					</div>
 				</div>
 				{/* Features */}
-				<div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
-					<h2 className="text-xl font-semibold text-gray-900 mb-6">Features</h2>
+				<div className="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-gray-200 dark:border-slate-800 p-6">
+					<h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-6">Features</h2>
 					<div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
 						<div>
-							<label className="block text-sm font-medium text-gray-700 mb-2">
+							<label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
 								Feature Name
 							</label>
 							<input
@@ -278,11 +278,11 @@ export default function UpdatePackage({ packageId }: { packageId: string }) {
 								value={featureKey}
 								onChange={e => setFeatureKey(e.target.value)}
 								placeholder="e.g., priority_support"
-								className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+								className="w-full px-4 py-2 border border-gray-300 dark:border-slate-700 rounded-lg bg-white dark:bg-slate-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
 							/>
 						</div>
 						<div>
-							<label className="block text-sm font-medium text-gray-700 mb-2">
+							<label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
 								Feature Value
 							</label>
 							<input
@@ -290,7 +290,7 @@ export default function UpdatePackage({ packageId }: { packageId: string }) {
 								value={featureValue}
 								onChange={e => setFeatureValue(e.target.value)}
 								placeholder="e.g., true or 5"
-								className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+								className="w-full px-4 py-2 border border-gray-300 dark:border-slate-700 rounded-lg bg-white dark:bg-slate-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
 							/>
 						</div>
 						<div className="flex items-end">
@@ -305,22 +305,22 @@ export default function UpdatePackage({ packageId }: { packageId: string }) {
 					</div>
 					{Object.entries(formData.features).length > 0 && (
 						<div className="space-y-2">
-							<p className="text-sm font-medium text-gray-700 mb-3">Added Features:</p>
+							<p className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">Added Features:</p>
 							{Object.entries(formData.features).map(([key, value]) => (
 								<div
 									key={key}
-									className="flex items-center justify-between bg-gray-50 p-3 rounded-lg border border-gray-200"
+									className="flex items-center justify-between bg-gray-50 dark:bg-slate-800 p-3 rounded-lg border border-gray-200 dark:border-slate-700"
 								>
 									<div>
-										<p className="text-sm font-medium text-gray-900">{key}</p>
-										<p className="text-xs text-gray-600">
+										<p className="text-sm font-medium text-gray-900 dark:text-gray-100">{key}</p>
+										<p className="text-xs text-gray-600 dark:text-gray-400">
 											Value: {typeof value === 'boolean' ? (value ? 'true' : 'false') : String(value)}
 										</p>
 									</div>
 									<button
 										type="button"
 										onClick={() => removeFeature(key)}
-										className="text-red-600 hover:text-red-700 transition-colors"
+										className="text-red-600 hover:text-red-700 dark:text-red-400 dark:hover:text-red-300 transition-colors"
 									>
 										<Trash2 size={18} />
 									</button>
@@ -330,13 +330,13 @@ export default function UpdatePackage({ packageId }: { packageId: string }) {
 					)}
 				</div>
 				{/* Plans */}
-				<div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+				<div className="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-gray-200 dark:border-slate-800 p-6">
 					<div className="flex items-center justify-between mb-6">
-						<h2 className="text-xl font-semibold text-gray-900">Plans <span className="text-red-500">*</span></h2>
+						<h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100">Plans <span className="text-red-500">*</span></h2>
 						<button
 							type="button"
 							onClick={addPlan}
-							className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-sm font-medium"
+							className="flex items-center gap-2 px-4 py-2 bg-blue-600 dark:bg-blue-700 text-white rounded-lg hover:bg-blue-700 dark:hover:bg-blue-900 transition-colors text-sm font-medium"
 						>
 							<Plus size={18} />
 							Add Plan
@@ -344,14 +344,14 @@ export default function UpdatePackage({ packageId }: { packageId: string }) {
 					</div>
 					<div className="space-y-6">
 						{formData.plans.map((plan: any, index: number) => (
-							<div key={index} className="border border-gray-200 rounded-lg p-6 bg-gray-50">
+							<div key={index} className="border border-gray-200 dark:border-slate-700 rounded-lg p-6 bg-gray-50 dark:bg-slate-800">
 								<div className="flex items-center justify-between mb-4">
-									<h3 className="text-lg font-semibold text-gray-900">Plan {index + 1}</h3>
+									<h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">Plan {index + 1}</h3>
 									{formData.plans.length > 1 && (
 										<button
 											type="button"
 											onClick={() => removePlan(index)}
-											className="text-red-600 hover:text-red-700 transition-colors"
+											className="text-red-600 hover:text-red-700 dark:text-red-400 dark:hover:text-red-300 transition-colors"
 										>
 											<Trash2 size={20} />
 										</button>
@@ -368,7 +368,7 @@ export default function UpdatePackage({ packageId }: { packageId: string }) {
 										/>
 									</div>
 									<div>
-										<label className="block text-sm font-medium text-gray-700 mb-2">
+										<label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
 											Duration (Days) <span className="text-red-500">*</span>
 										</label>
 										<input
@@ -376,12 +376,12 @@ export default function UpdatePackage({ packageId }: { packageId: string }) {
 											value={plan.duration_days}
 											onChange={e => handlePlanChange(index, 'duration_days', e.target.value)}
 											min="1"
-											className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+											className="w-full px-4 py-2 border border-gray-300 dark:border-slate-700 rounded-lg bg-white dark:bg-slate-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
 											required
 										/>
 									</div>
 									<div>
-										<label className="block text-sm font-medium text-gray-700 mb-2">
+										<label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
 											Price <span className="text-red-500">*</span>
 										</label>
 										<input
@@ -390,7 +390,7 @@ export default function UpdatePackage({ packageId }: { packageId: string }) {
 											onChange={e => handlePlanChange(index, 'price', e.target.value)}
 											min="0"
 											step="0.01"
-											className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+											className="w-full px-4 py-2 border border-gray-300 dark:border-slate-700 rounded-lg bg-white dark:bg-slate-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
 											required
 										/>
 									</div>
@@ -403,7 +403,7 @@ export default function UpdatePackage({ packageId }: { packageId: string }) {
 										/>
 									</div>
 									<div>
-										<label className="block text-sm font-medium text-gray-700 mb-2">
+										<label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
 											Discount Value
 										</label>
 										<input
@@ -412,7 +412,7 @@ export default function UpdatePackage({ packageId }: { packageId: string }) {
 											onChange={e => handlePlanChange(index, 'discount_value', e.target.value)}
 											min="0"
 											step="0.01"
-											className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+											className="w-full px-4 py-2 border border-gray-300 dark:border-slate-700 rounded-lg bg-white dark:bg-slate-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
 										/>
 									</div>
 									<div>
@@ -434,14 +434,14 @@ export default function UpdatePackage({ packageId }: { packageId: string }) {
 					<button
 						type="button"
 						onClick={() => router.back()}
-						className="px-6 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors font-medium"
+						className="px-6 py-2 border border-gray-300 dark:border-slate-700 text-gray-700 dark:text-gray-100 rounded-lg hover:bg-gray-50 dark:hover:bg-slate-800 transition-colors font-medium"
 					>
 						Cancel
 					</button>
 					<button
 						type="submit"
 						disabled={isSubmitting}
-						className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium disabled:opacity-50"
+						className="px-6 py-2 bg-blue-600 dark:bg-blue-700 text-white rounded-lg hover:bg-blue-700 dark:hover:bg-blue-900 transition-colors font-medium disabled:opacity-50"
 					>
 						{isSubmitting ? 'Updating...' : 'Update Package'}
 					</button>
@@ -449,4 +449,5 @@ export default function UpdatePackage({ packageId }: { packageId: string }) {
 			</form>
 		</div>
 	);
+
 }

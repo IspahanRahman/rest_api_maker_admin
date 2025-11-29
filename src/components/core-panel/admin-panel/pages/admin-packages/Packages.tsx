@@ -72,7 +72,7 @@ export default function Packages() {
 	// Loading state
 	if (isLoading) {
 		return (
-			<div className="flex items-center justify-center min-h-[60vh] bg-slate-50/60">
+			<div className="flex items-center justify-center min-h-[60vh] bg-surface">
 				<div className="text-center">
 					<Loader2 className="h-12 w-12 animate-spin text-blue-600 mx-auto mb-4" />
 					<p className="text-slate-600 text-sm">Loading packages, please wait...</p>
@@ -84,15 +84,15 @@ export default function Packages() {
 	// Error state
 	if (error) {
 		return (
-			<div className="flex items-center justify-center min-h-[60vh] bg-slate-50/60">
-				<div className="text-center max-w-sm rounded-2xl border border-red-100 bg-white px-8 py-6 shadow-sm">
+			<div className="flex items-center justify-center min-h-[60vh] bg-suraface">
+				<div className="text-center max-w-sm rounded-2xl border border-red-100 bg-background px-8 py-6 shadow-sm">
 					<div className="mb-4 inline-flex h-16 w-16 items-center justify-center rounded-full bg-red-50 text-red-600">
 						<Package size={32} />
 					</div>
-					<h3 className="text-lg font-semibold text-slate-900 mb-2">
+					<h3 className="text-lg font-semibold text-foreground mb-2">
 						Failed to load packages
 					</h3>
-					<p className="text-sm text-slate-600 mb-5">
+					<p className="text-sm text-foreground/70 mb-5">
 						Unable to load packages at this time. Please check your connection and try again.
 					</p>
 					<button
@@ -107,25 +107,26 @@ export default function Packages() {
 		);
 	}
 
+
 	return (
 		<>
-			<div className="min-h-screen bg-slate-50/80">
+			<div className="min-h-screen bg-surface">
 				<div className="mx-auto max-w-7xl">
 					{/* Header */}
 					<div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between mb-6">
 						<div className="space-y-2">
-							<div className="inline-flex items-center gap-2 rounded-full bg-blue-50 px-3 py-1">
-								<span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-blue-100">
-									<Package className="h-3.5 w-3.5 text-blue-700" />
+							<div className="inline-flex items-center gap-2 rounded-full bg-blue-50 dark:bg-blue-900 px-3 py-1">
+								<span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-blue-100 dark:bg-blue-700">
+									<Package className="h-3.5 w-3.5 text-blue-700 dark:text-blue-200" />
 								</span>
-								<span className="text-xs font-medium uppercase tracking-wide text-blue-800">
+								<span className="text-xs font-medium uppercase tracking-wide text-blue-800 dark:text-blue-100">
 									Package Management
 								</span>
 							</div>
-							<h1 className="text-2xl sm:text-3xl font-bold text-slate-900">
+							<h1 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-slate-100">
 								Subscription Packages
 							</h1>
-							<p className="text-sm text-slate-600 max-w-2xl">
+							<p className="text-sm text-slate-600 dark:text-slate-400 max-w-2xl">
 								Configure and manage your subscription packages. Adjust limits, features, and
 								pricing plans to match your customers&apos; needs.
 							</p>
@@ -133,17 +134,17 @@ export default function Packages() {
 
 						<div className="flex items-center gap-3 flex-wrap">
 							{packages.length > 0 && (
-								<div className="hidden sm:inline-flex items-center gap-2 rounded-full bg-slate-100 px-3 py-1.5">
-									<span className="text-sm font-medium text-slate-800">
+								<div className="hidden sm:inline-flex items-center gap-2 rounded-full bg-slate-100 dark:bg-slate-800 px-3 py-1.5">
+									<span className="text-sm font-medium text-slate-800 dark:text-slate-100">
 										{filteredPackages.length} of {packages.length}
 									</span>
-									<span className="text-xs text-slate-500">packages shown</span>
+									<span className="text-xs text-slate-500 dark:text-slate-400">packages shown</span>
 								</div>
 							)}
 
 							<Link
 								href="/packages/create"
-								className="inline-flex items-center gap-2 rounded-lg bg-blue-800 px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-900 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+								className="inline-flex items-center gap-2 rounded-lg bg-blue-800 dark:bg-blue-700 px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-900 dark:hover:bg-blue-900 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
 							>
 								<Plus size={18} />
 								New Package
@@ -154,27 +155,27 @@ export default function Packages() {
 					{/* Stats Row */}
 					{packages.length > 0 && (
 						<div className="mb-6 grid grid-cols-1 gap-3 sm:grid-cols-3">
-							<div className="rounded-2xl border border-slate-200 bg-white px-4 py-3 shadow-sm">
-								<p className="text-xs font-medium uppercase tracking-wide text-slate-500">
+							<div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 py-3 shadow-sm">
+								<p className="text-xs font-medium uppercase tracking-wide text-slate-500 dark:text-slate-400">
 									Total Packages
 								</p>
-								<p className="mt-1 text-2xl font-semibold text-slate-900">
+								<p className="mt-1 text-2xl font-semibold text-slate-900 dark:text-slate-100">
 									{stats.total}
 								</p>
 							</div>
-							<div className="rounded-2xl border border-emerald-100 bg-emerald-50/70 px-4 py-3 shadow-sm">
-								<p className="text-xs font-medium uppercase tracking-wide text-emerald-700">
+							<div className="rounded-2xl border border-emerald-100 dark:border-emerald-900 bg-emerald-50/70 dark:bg-emerald-900/60 px-4 py-3 shadow-sm">
+								<p className="text-xs font-medium uppercase tracking-wide text-emerald-700 dark:text-emerald-300">
 									Active
 								</p>
-								<p className="mt-1 text-2xl font-semibold text-emerald-900">
+								<p className="mt-1 text-2xl font-semibold text-emerald-900 dark:text-emerald-100">
 									{stats.active}
 								</p>
 							</div>
-							<div className="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 shadow-sm">
-								<p className="text-xs font-medium uppercase tracking-wide text-slate-600">
+							<div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800 px-4 py-3 shadow-sm">
+								<p className="text-xs font-medium uppercase tracking-wide text-slate-600 dark:text-slate-400">
 									Inactive
 								</p>
-								<p className="mt-1 text-2xl font-semibold text-slate-900">
+								<p className="mt-1 text-2xl font-semibold text-slate-900 dark:text-slate-100">
 									{stats.inactive}
 								</p>
 							</div>
@@ -183,9 +184,9 @@ export default function Packages() {
 
 					{/* Search Bar */}
 					<div className="mb-6">
-						<div className="rounded-2xl border border-slate-200 bg-white px-4 py-3 shadow-sm max-w-xl">
+						<div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 py-3 shadow-sm max-w-xl">
 							<div className="relative">
-								<div className="pointer-events-none absolute inset-y-0 left-3 flex items-center text-slate-400">
+								<div className="pointer-events-none absolute inset-y-0 left-3 flex items-center text-slate-400 dark:text-slate-500">
 									<Search size={18} />
 								</div>
 								<input
@@ -193,12 +194,12 @@ export default function Packages() {
 									placeholder="Search packages by name..."
 									value={searchTerm}
 									onChange={(e) => setSearchTerm(e.target.value)}
-									className="w-full rounded-lg border border-slate-200 bg-slate-50 pl-10 pr-9 py-2.5 text-sm text-slate-900 placeholder:text-slate-500 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 transition-colors"
+									className="w-full rounded-lg border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800 pl-10 pr-9 py-2.5 text-sm text-slate-900 dark:text-slate-100 placeholder:text-slate-500 dark:placeholder:text-slate-400 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 transition-colors"
 								/>
 								{searchTerm && (
 									<button
 										onClick={() => setSearchTerm('')}
-										className="absolute inset-y-0 right-2.5 flex items-center text-slate-400 hover:text-slate-600 transition-colors text-lg"
+										className="absolute inset-y-0 right-2.5 flex items-center text-slate-400 dark:text-slate-500 hover:text-slate-600 dark:hover:text-slate-300 transition-colors text-lg"
 									>
 										×
 									</button>
@@ -218,18 +219,18 @@ export default function Packages() {
 								return (
 									<div
 										key={pkg.id}
-										className={`group flex flex-col rounded-2xl border border-slate-200/80 bg-white shadow-sm transition-all hover:-translate-y-0.5 hover:border-blue-200 hover:shadow-lg ${isBeingDeleted ? 'opacity-50 pointer-events-none' : ''
+										className={`group flex flex-col rounded-2xl border border-slate-200/80 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm transition-all hover:-translate-y-0.5 hover:border-blue-200 dark:hover:border-blue-700 hover:shadow-lg ${isBeingDeleted ? 'opacity-50 pointer-events-none' : ''
 											}`}
 									>
 										{/* Card Header */}
-										<div className="border-b border-slate-200 bg-gradient-to-r from-slate-50 to-blue-50/60 px-6 py-4 rounded-t-2xl">
+										<div className="border-b border-slate-200 dark:border-slate-800 bg-gradient-to-r from-slate-50 dark:from-slate-900 to-blue-50/60 dark:to-blue-900 px-6 py-4 rounded-t-2xl">
 											<div className="flex items-start justify-between gap-3">
 												<div className="flex-1 min-w-0">
-													<h2 className="text-lg font-semibold text-slate-900 truncate">
+													<h2 className="text-lg font-semibold text-slate-900 dark:text-slate-100 truncate">
 														{pkg.name}
 													</h2>
-													<p className="mt-1 text-xs text-slate-600">
-														<span className="font-semibold text-slate-800">
+													<p className="mt-1 text-xs text-slate-600 dark:text-slate-400">
+														<span className="font-semibold text-slate-800 dark:text-slate-100">
 															{pkg.sell_count}
 														</span>{' '}
 														active subscriptions
@@ -237,14 +238,14 @@ export default function Packages() {
 												</div>
 												<span
 													className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-semibold shrink-0 ${pkg.status === 'active'
-															? 'bg-emerald-50 text-emerald-700 ring-1 ring-emerald-200'
-															: 'bg-slate-100 text-slate-700 ring-1 ring-slate-200'
+														? 'bg-emerald-50 dark:bg-emerald-900 text-emerald-700 dark:text-emerald-300 ring-1 ring-emerald-200 dark:ring-emerald-900'
+														: 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 ring-1 ring-slate-200 dark:ring-slate-800'
 														}`}
 												>
 													<span
 														className={`h-2 w-2 rounded-full ${pkg.status === 'active'
-																? 'bg-emerald-500'
-																: 'bg-slate-400'
+															? 'bg-emerald-500'
+															: 'bg-slate-400'
 															}`}
 													/>
 													{pkg.status.charAt(0).toUpperCase() + pkg.status.slice(1)}
@@ -255,20 +256,20 @@ export default function Packages() {
 										{/* Card Body */}
 										<div className="flex-1 px-6 py-5 space-y-5">
 											{/* Specifications */}
-											<div className="grid grid-cols-2 gap-4 rounded-xl bg-slate-50/90 p-4">
+											<div className="grid grid-cols-2 gap-4 rounded-xl bg-slate-50/90 dark:bg-slate-800 p-4">
 												<div className="text-center">
-													<p className="text-[11px] font-semibold uppercase tracking-wide text-slate-500 mb-1">
+													<p className="text-[11px] font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400 mb-1">
 														Max Projects
 													</p>
-													<p className="text-xl font-bold text-slate-900">
+													<p className="text-xl font-bold text-slate-900 dark:text-slate-100">
 														{pkg.max_projects}
 													</p>
 												</div>
 												<div className="text-center">
-													<p className="text-[11px] font-semibold uppercase tracking-wide text-slate-500 mb-1">
+													<p className="text-[11px] font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400 mb-1">
 														Tables / Project
 													</p>
-													<p className="text-xl font-bold text-slate-900">
+													<p className="text-xl font-bold text-slate-900 dark:text-slate-100">
 														{pkg.max_tables_per_project}
 													</p>
 												</div>
@@ -277,14 +278,14 @@ export default function Packages() {
 											{/* Features */}
 											{Object.keys(features).length > 0 && (
 												<div>
-													<p className="text-[11px] font-semibold uppercase tracking-wide text-slate-500 mb-2.5">
+													<p className="text-[11px] font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400 mb-2.5">
 														Features
 													</p>
 													<div className="space-y-2">
 														{Object.entries(features).slice(0, 5).map(([key, value]) => (
 															<div
 																key={key}
-																className="flex items-center gap-3 text-sm text-slate-700"
+																className="flex items-center gap-3 text-sm text-slate-700 dark:text-slate-200"
 															>
 																<div className="h-1.5 w-1.5 rounded-full bg-blue-500 shrink-0" />
 																<span className="flex-1">
@@ -301,7 +302,7 @@ export default function Packages() {
 															</div>
 														))}
 														{Object.keys(features).length > 5 && (
-															<p className="text-xs text-slate-500 text-center pt-1">
+															<p className="text-xs text-slate-500 dark:text-slate-400 text-center pt-1">
 																+{Object.keys(features).length - 5} more features
 															</p>
 														)}
@@ -312,26 +313,26 @@ export default function Packages() {
 											{/* Pricing Plans */}
 											{pkg.PackagePlans?.length > 0 && (
 												<div>
-													<p className="text-[11px] font-semibold uppercase tracking-wide text-slate-500 mb-2.5">
+													<p className="text-[11px] font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400 mb-2.5">
 														Pricing Plans
 													</p>
 													<div className="space-y-3">
 														{pkg.PackagePlans.map((plan: any) => (
 															<div
 																key={plan.id}
-																className="flex items-center justify-between rounded-xl bg-slate-50 border border-slate-200 px-4 py-3"
+																className="flex items-center justify-between rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-800 px-4 py-3"
 															>
 																<div className="flex flex-col gap-1">
-																	<span className="text-sm font-semibold text-slate-800">
+																	<span className="text-sm font-semibold text-slate-800 dark:text-slate-100">
 																		{formatPlanType(plan.plan_type)}
 																	</span>
 																	{plan.status === 'active' ? (
-																		<span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-50 px-2.5 py-0.5 text-[11px] font-semibold text-emerald-700 ring-1 ring-emerald-200">
+																		<span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-50 dark:bg-emerald-900 px-2.5 py-0.5 text-[11px] font-semibold text-emerald-700 dark:text-emerald-300 ring-1 ring-emerald-200 dark:ring-emerald-900">
 																			<span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
 																			Active
 																		</span>
 																	) : (
-																		<span className="inline-flex items-center gap-1.5 rounded-full bg-slate-100 px-2.5 py-0.5 text-[11px] font-semibold text-slate-700 ring-1 ring-slate-200">
+																		<span className="inline-flex items-center gap-1.5 rounded-full bg-slate-100 dark:bg-slate-800 px-2.5 py-0.5 text-[11px] font-semibold text-slate-700 dark:text-slate-300 ring-1 ring-slate-200 dark:ring-slate-800">
 																			<span className="h-1.5 w-1.5 rounded-full bg-slate-400" />
 																			Inactive
 																		</span>
@@ -339,14 +340,14 @@ export default function Packages() {
 																</div>
 
 																<div className="text-right">
-																	<p className="text-lg font-bold text-slate-900">
+																	<p className="text-lg font-bold text-slate-900 dark:text-slate-100">
 																		${plan.final_price}
 																	</p>
 																	{plan.discount_value && plan.discount_value > 0 && (
-																		<p className="text-xs font-medium text-emerald-600">
+																		<p className="text-xs font-medium text-emerald-600 dark:text-emerald-300">
 																			{`${plan.discount_type === 'fixed'
-																					? 'Save $'
-																					: 'Save '
+																				? 'Save $'
+																				: 'Save '
 																				}${plan.discount_value}${plan.discount_type === 'percentage'
 																					? '%'
 																					: ''
@@ -362,10 +363,10 @@ export default function Packages() {
 										</div>
 
 										{/* Card Footer */}
-										<div className="flex gap-3 border-t border-slate-200 bg-slate-50/60 px-6 py-4 rounded-b-2xl">
+										<div className="flex gap-3 border-t border-slate-200 dark:border-slate-800 bg-slate-50/60 dark:bg-slate-900 px-6 py-4 rounded-b-2xl">
 											<Link
 												href={`/packages/update/${pkg.id}`}
-												className="flex-1 inline-flex items-center justify-center gap-2 rounded-lg bg-blue-800 px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-900 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+												className="flex-1 inline-flex items-center justify-center gap-2 rounded-lg bg-blue-800 dark:bg-blue-700 px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-900 dark:hover:bg-blue-900 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
 											>
 												<Edit2 size={16} />
 												Edit
@@ -376,7 +377,7 @@ export default function Packages() {
 													setIsDeleteModalOpen(true);
 												}}
 												disabled={deletePackageMutation.isLoading}
-												className="flex-1 inline-flex items-center justify-center gap-2 rounded-lg border border-red-200 bg-white px-4 py-2.5 text-sm font-semibold text-red-600 hover:bg-red-50 hover:border-red-300 transition-colors focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
+												className="flex-1 inline-flex items-center justify-center gap-2 rounded-lg border border-red-200 dark:border-red-900 bg-white dark:bg-slate-900 px-4 py-2.5 text-sm font-semibold text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900 hover:border-red-300 dark:hover:border-red-700 transition-colors focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
 											>
 												{deletePackageId === pkg.id && deletePackageMutation.isLoading ? (
 													<Loader2 size={16} className="animate-spin" />
@@ -393,13 +394,13 @@ export default function Packages() {
 					) : (
 						/* Empty State */
 						<div className="text-center py-16">
-							<div className="mb-6 inline-flex h-20 w-20 items-center justify-center rounded-full bg-slate-100 text-slate-400">
+							<div className="mb-6 inline-flex h-20 w-20 items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 text-slate-400 dark:text-slate-500">
 								<Eye size={40} />
 							</div>
-							<h3 className="text-xl font-semibold text-slate-900 mb-2">
+							<h3 className="text-xl font-semibold text-slate-900 dark:text-slate-100 mb-2">
 								{searchTerm ? 'No packages found' : 'No packages yet'}
 							</h3>
-							<p className="text-slate-600 mb-8 max-w-md mx-auto text-sm">
+							<p className="text-slate-600 dark:text-slate-400 mb-8 max-w-md mx-auto text-sm">
 								{searchTerm
 									? `No packages match "${searchTerm}". Try adjusting your search terms.`
 									: 'Get started by creating your first subscription package to offer to customers.'}
@@ -407,7 +408,7 @@ export default function Packages() {
 							{!searchTerm && (
 								<Link
 									href="/packages/create"
-									className="inline-flex items-center gap-2 rounded-lg bg-blue-800 px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-blue-900 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+									className="inline-flex items-center gap-2 rounded-lg bg-blue-800 dark:bg-blue-700 px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-blue-900 dark:hover:bg-blue-900 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
 								>
 									<Plus size={18} />
 									Create Your First Package
@@ -427,19 +428,19 @@ export default function Packages() {
 				}}
 			>
 				<div className="p-6 text-center">
-					<div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-red-100 text-red-600">
+					<div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-red-100 dark:bg-red-900 text-red-600 dark:text-red-400">
 						<Trash2 size={32} />
 					</div>
-					<h3 className="mb-2 text-lg font-semibold text-slate-900">
+					<h3 className="mb-2 text-lg font-semibold text-slate-900 dark:text-slate-100">
 						Delete Package?
 					</h3>
-					<p className="mb-6 text-sm text-slate-600">
+					<p className="mb-6 text-sm text-slate-600 dark:text-slate-400">
 						Are you sure you want to delete this package? This action cannot be undone.
 					</p>
 					<div className="flex gap-3 justify-center">
 						<button
 							type="button"
-							className="px-5 py-2 rounded-lg bg-slate-100 text-slate-700 text-sm font-medium hover:bg-slate-200 transition-colors cursor-pointer"
+							className="px-5 py-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-100 text-sm font-medium hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors cursor-pointer"
 							onClick={() => {
 								setIsDeleteModalOpen(false);
 								setDeletePackageId(null);
@@ -449,7 +450,7 @@ export default function Packages() {
 						</button>
 						<button
 							type="button"
-							className="px-5 py-2 rounded-lg bg-red-600 text-white text-sm font-medium hover:bg-red-700 transition-colors disabled:opacity-50 cursor-pointer"
+							className="px-5 py-2 rounded-lg bg-red-600 dark:bg-red-700 text-white text-sm font-medium hover:bg-red-700 dark:hover:bg-red-800 transition-colors disabled:opacity-50 cursor-pointer"
 							onClick={handleDelete}
 							disabled={deletePackageMutation.isLoading}
 						>
@@ -463,4 +464,5 @@ export default function Packages() {
 			</Modal>
 		</>
 	);
+
 }
