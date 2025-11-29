@@ -22,49 +22,49 @@ export default function OverviewStats({ totals }: OverviewStatsProps) {
 			label: 'Total Users',
 			value: totals.totalUsers,
 			icon: Users,
-			bg: 'bg-sky-50',
-			border: 'border-sky-100',
-			text: 'text-sky-700',
+			bg: 'bg-sky-50 dark:bg-sky-900/60',
+			border: 'border-sky-100 dark:border-sky-900',
+			text: 'text-sky-700 dark:text-sky-300',
 		},
 		{
 			label: 'Active Users',
 			value: totals.activeUsers,
 			icon: UserCheck,
-			bg: 'bg-emerald-50',
-			border: 'border-emerald-100',
-			text: 'text-emerald-700',
+			bg: 'bg-emerald-50 dark:bg-emerald-900/60',
+			border: 'border-emerald-100 dark:border-emerald-900',
+			text: 'text-emerald-700 dark:text-emerald-300',
 		},
 		{
 			label: 'Total Projects',
 			value: totals.totalProjects,
 			icon: FolderGit2,
-			bg: 'bg-violet-50',
-			border: 'border-violet-100',
-			text: 'text-violet-700',
+			bg: 'bg-violet-50 dark:bg-violet-900/60',
+			border: 'border-violet-100 dark:border-violet-900',
+			text: 'text-violet-700 dark:text-violet-300',
 		},
 		{
 			label: 'Total Packages',
 			value: totals.totalPackages,
 			icon: Package,
-			bg: 'bg-amber-50',
-			border: 'border-amber-100',
-			text: 'text-amber-700',
+			bg: 'bg-amber-50 dark:bg-amber-900/60',
+			border: 'border-amber-100 dark:border-amber-900',
+			text: 'text-amber-700 dark:text-amber-300',
 		},
 		{
 			label: 'Total Purchases',
 			value: totals.totalPurchases,
 			icon: ShoppingCart,
-			bg: 'bg-indigo-50',
-			border: 'border-indigo-100',
-			text: 'text-indigo-700',
+			bg: 'bg-indigo-50 dark:bg-indigo-900/60',
+			border: 'border-indigo-100 dark:border-indigo-900',
+			text: 'text-indigo-700 dark:text-indigo-300',
 		},
 		{
 			label: 'Total Revenue',
 			value: totals.totalRevenue,
 			icon: Coins,
-			bg: 'bg-slate-900',
-			border: 'border-slate-900',
-			text: 'text-amber-300',
+			bg: 'bg-slate-900 dark:bg-gradient-to-r dark:from-slate-900 dark:to-slate-800',
+			border: 'border-slate-900 dark:border-slate-800',
+			text: 'text-amber-300 dark:text-amber-300',
 			isCurrency: true,
 			dark: true,
 		},
@@ -77,23 +77,20 @@ export default function OverviewStats({ totals }: OverviewStatsProps) {
 				return (
 					<div
 						key={card.label}
-						className={`flex items-center justify-between rounded-2xl border ${card.border} ${card.dark ? 'bg-gradient-to-r from-slate-900 to-slate-800 text-slate-50' : card.bg
-							} px-4 py-4 shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-md`}
+						className={`flex items-center justify-between rounded-2xl border ${card.border} ${card.bg} px-4 py-4 shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-md`}
 					>
 						<div>
 							<p
-								className={`text-xs font-medium uppercase tracking-wide ${card.dark ? 'text-slate-300' : 'text-slate-500'
-									}`}
+								className={`text-xs font-medium uppercase tracking-wide ${card.text}`}
 							>
 								{card.label}
 							</p>
-							<p className="mt-2 text-2xl font-semibold">
+							<p className="mt-2 text-2xl font-semibold text-slate-900 dark:text-slate-100">
 								{card.isCurrency ? `$${formatter.format(card.value)}` : formatter.format(card.value)}
 							</p>
 						</div>
 						<div
-							className={`flex h-10 w-10 items-center justify-center rounded-xl ${card.dark ? 'bg-slate-800 text-amber-200' : `bg-white ${card.text}`
-								} shadow-sm`}
+							className={`flex h-10 w-10 items-center justify-center rounded-xl bg-white dark:bg-slate-800 ${card.text} shadow-sm`}
 						>
 							<Icon className="h-5 w-5" />
 						</div>

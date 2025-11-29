@@ -1,6 +1,0 @@
-export { default as TableCard } from './TableCard'
-export { default as TableStats } from './TableStats'
-export { default as CreateTableModal } from './CreateTableModal'
-export { default as EditTableModal } from './EditTableModal'
-export { default as DeleteTableConfirmationModal } from './DeleteTableConfirmationModal'
-export { default as TableDetailsModal } from './TableDetailsModal'
